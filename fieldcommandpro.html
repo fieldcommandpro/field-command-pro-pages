@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Command Pro — Weather Reports • Live Map • Pro Tools</title>
+  <meta name="description" content="Field Command Pro is a location‑aware reporting app. Drop precise pins for snowfall and weather events, view live radar overlays, and unlock powerful Pro features for field teams and contractors." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --muted:#9fb0c7;
+      --text:#e6edf7;
+      --brand:#60a5fa;       /* sky */
+      --brand-2:#34d399;     /* emerald */
+      --accent:#a78bfa;      /* violet */
+      --border:#1f2a44;
+      --ring:rgba(96,165,250,.4);
+      --shadow: 0 16px 40px rgba(2,6,23,.45);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text); background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(52,211,153,.18), transparent 60%),
+        radial-gradient(1200px 600px at 110% 10%, rgba(96,165,250,.15), transparent 60%),
+        linear-gradient(180deg, #0a1020, #0b1220 30%, #0b1220 70%, #0a1020);
+      line-height:1.65;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:clamp(22px,3.5vw,44px)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    @media (max-width: 920px){.hero{grid-template-columns:1fr}}
+    .logo{
+      width:64px;height:64px;border-radius:18px;
+      background: conic-gradient(from 120deg,var(--brand),var(--accent),var(--brand-2));
+      display:grid;place-items:center; box-shadow:var(--shadow);
+    }
+    .logo span{font-weight:800;color:#0b1220;font-size:26px}
+    h1{margin:.2rem 0;font-size: clamp(28px, 4.2vw, 52px); line-height:1.06}
+    .lead{color:#c7d2e0; font-size: clamp(16px,1.6vw,18px)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{
+      display:inline-flex;align-items:center;gap:.55rem;
+      text-decoration:none; font-weight:700; color:#0b1220;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      padding:.85rem 1.1rem;border-radius:12px; box-shadow:var(--shadow);
+      transition: transform .06s ease;
+    }
+    .btn.secondary{background:linear-gradient(135deg,#1e293b,#0f172a);color:#e6edf7;border:1px solid var(--border)}
+    .btn:active{transform:translateY(1px)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.0)),var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    @media (max-width: 1000px){.feature-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width: 640px){.feature-grid{grid-template-columns:1fr}}
+    .feature{padding:18px}
+    .feature h3{margin:0 0 .25rem 0;font-size:18px}
+    .chip{display:inline-block;background:rgba(167,139,250,.14);color:#d9d6ff;border:1px solid rgba(167,139,250,.35);padding:.28rem .5rem;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.02em}
+    .section{margin-top:42px}
+    .pill{display:inline-block;font-size:.78rem;color:#0b1220;background:linear-gradient(135deg,var(--brand),var(--brand-2));padding:.28rem .6rem;border-radius:999px;font-weight:800;letter-spacing:.02em}
+    .kbd{background:#0b1220;border:1px solid var(--border);padding:.1rem .45rem;border-radius:8px;font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:.92rem;color:#dbeafe}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width: 860px){.two-col{grid-template-columns:1fr}}
+    .shadowed{filter: drop-shadow(0 14px 36px rgba(2,6,23,.55))}
+    .imgbox{border-radius:14px;border:1px solid var(--border);overflow:hidden}
+    .list{margin:.3rem 0 0 1rem}
+    .muted{color:var(--muted)}
+    footer{color:var(--muted);font-size:.92rem;margin-top:36px;border-top:1px solid var(--border);padding-top:16px}
+  </style>
+</head>
+<body>
+  <header class="wrap hero">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <div class="logo" aria-hidden="true"><span>F</span></div>
+        <div class="pill">Field Command Pro</div>
+      </div>
+      <h1>Report Snow. See the Map. Lead the Field.</h1>
+      <p class="lead">Field Command Pro lets crews and communities report <strong>precise, real‑time snowfall</strong> with one tap. Each report drops a GPS‑accurate pin on a beautiful live map—with optional <strong>rain radar</strong>, <strong>premium themes</strong>, and powerful <strong>Pro</strong> tools for contractors.</p>
+      <div class="cta-row">
+        <a class="btn" href="#download">Get the App</a>
+        <a class="btn secondary" href="#features">Explore Features</a>
+      </div>
+    </div>
+    <div class="card imgbox shadowed" aria-hidden="true">
+      <svg viewBox="0 0 600 420" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0%" stop-color="#172554"/>
+            <stop offset="100%" stop-color="#0b1220"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="600" height="420" fill="url(#g1)" />
+        <!-- Faux map grid -->
+        <g stroke="#1f2a44" stroke-width="1">
+          <path d="M0 70 H600 M0 140 H600 M0 210 H600 M0 280 H600 M0 350 H600" opacity=".9"/>
+          <path d="M100 0 V420 M200 0 V420 M300 0 V420 M400 0 V420 M500 0 V420" opacity=".9"/>
+        </g>
+        <!-- Pins -->
+        <g>
+          <circle cx="170" cy="180" r="8" fill="#34d399" />
+          <circle cx="280" cy="250" r="8" fill="#60a5fa" />
+          <circle cx="450" cy="130" r="8" fill="#a78bfa" />
+        </g>
+        <text x="24" y="36" fill="#9fb0c7" font-family="Inter" font-size="18">Live Map • Snowfall Reports</text>
+      </svg>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="how" class="section two-col">
+      <div class="card" style="padding:22px">
+        <h2>How it works</h2>
+        <ol class="list">
+          <li>Tap <span class="kbd">Report Snowfall</span> in the app.</li>
+          <li>We use your device’s <strong>precise GPS</strong> (with your permission) to capture latitude & longitude.</li>
+          <li>Your report becomes a <strong>pin on the Field Command Pro map</strong> for everyone to see.</li>
+        </ol>
+        <p class="muted">Sign‑in options include username & password, plus OAuth (Google and Facebook). Account deletion is available in‑app at <span class="kbd">Settings → Delete Account</span>.</p>
+      </div>
+      <div class="card" style="padding:22px">
+        <h2>Made for the field</h2>
+        <p>Built for communities and professionals who need clarity fast. Whether you’re a contractor coordinating crews or a neighbor sharing conditions, Field Command Pro keeps your team aligned on what’s happening <em>right now</em>.</p>
+        <ul class="list">
+          <li>Drop accurate, time‑stamped snowfall pins</li>
+          <li>Browse reports with easy filters</li>
+          <li>Switch map themes for visibility in any light</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="card feature"><h3>Live Snowfall Map</h3><p>See community reports land in real‑time as precise pins with context.</p></div>
+        <div class="card feature"><h3>Simple Reporting</h3><p>One‑tap reporting captures your location and posts your update instantly.</p></div>
+        <div class="card feature"><h3>Google & Facebook Sign‑In</h3><p>Fast, secure OAuth sign‑in or classic email & password.</p></div>
+        <div class="card feature"><h3>Alerts</h3><p>Enable extra SOS alerts with Pro to keep crews informed.</p></div>
+        <div class="card feature"><h3>Rain Radar Overlay</h3><p>Layer radar on the map to understand approaching systems.</p></div>
+        <div class="card feature"><h3>Beautiful Map Themes</h3><p>Switch between premium themes designed for daylight or night ops.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="chip">Pro Subscription</span></h2>
+      <div class="two-col">
+        <div class="card feature">
+          <h3>Unlock more with Pro</h3>
+          <ul class="list">
+            <li>Exclusive Filters</li>
+            <li>Unlimited Viewing</li>
+            <li>Exclusive Pin Colors</li>
+            <li>Extra SOS Alerts</li>
+            <li>Premium Map Themes</li>
+            <li>Rain Radar Overlay</li>
+            <li>Pin Comments</li>
+          </ul>
+          <p class="muted">"Contractor Pro" accounts (usertype3) include all Pro entitlements.</p>
+        </div>
+        <div class="card feature">
+          <h3>Why go Pro?</h3>
+          <p>For field leaders and contractors, Pro turns Field Command Pro into a control panel—helping you view more, sort faster, and coordinate confidently.</p>
+          <a class="btn" href="#download">Start with Pro</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section two-col">
+      <div class="card" style="padding:18px">
+        <h2>Privacy at a glance</h2>
+        <ul class="list">
+          <li>We collect precise location <em>only</em> when you submit a report, to place a map pin.</li>
+          <li>Data is used for <strong>app functionality</strong> and is not sold to advertisers.</li>
+          <li>You can delete your account any time in‑app: <span class="kbd">Settings → Delete Account</span>.</li>
+        </ul>
+        <p class="muted">Need details? Read our account & data deletion steps.</p>
+        <a class="btn secondary" href="./account-deletion.html">Account & Data Deletion</a>
+      </div>
+      <div class="card" style="padding:18px">
+        <h2>Support</h2>
+        <p>Email us anytime:
+          <a class="btn" href="mailto:Info@FieldCommandPro.com">Info@FieldCommandPro.com</a>
+        </p>
+        <p class="muted">We typically respond within 1–2 business days.</p>
+      </div>
+    </section>
+
+    <section id="download" class="section card" style="padding:20px; text-align:center">
+      <h2>Get Field Command Pro</h2>
+      <p class="muted">Available for Android. iOS coming soon.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn" href="#">Google Play (coming soon)</a>
+        <a class="btn secondary" href="#">Join Beta</a>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <p class="muted">© <span id="y"></span> Field Command Pro. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
