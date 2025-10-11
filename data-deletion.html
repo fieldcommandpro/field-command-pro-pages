@@ -1,38 +1,204 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Field Command Pro – User Data Deletion</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Command Pro – Account & Data Deletion</title>
+  <meta name="description" content="How to delete your Field Command Pro account and personal data. In-app, email, or reinstall-and-delete options." />
+
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 2rem; line-height: 1.6; }
-    h1, h2 { line-height: 1.25; }
-    code { background: #f4f4f4; padding: 0.1rem 0.25rem; border-radius: 4px; }
-    .step { background: #f8fafc; border: 1px solid #e5e7eb; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
-    .small { color: #6b7280; font-size: 0.9rem; }
+    :root{
+      --bg:#0b1220;
+      --card:#0f172a;
+      --muted:#94a3b8;
+      --text:#e5edf7;
+      --brand:#60a5fa;
+      --brand-2:#34d399;
+      --border:#1f2a44;
+      --ring: rgba(96,165,250,.4);
+      --shadow: 0 10px 30px rgba(2,6,23,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(52,211,153,.18), transparent 60%),
+        radial-gradient(1200px 600px at 110% 10%, rgba(96,165,250,.15), transparent 60%),
+        var(--bg);
+      line-height:1.65;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(20px, 3.5vw, 48px);
+    }
+
+    .hero{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom: 20px;
+    }
+    .logo{
+      width:46px;height:46px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display:grid;place-items:center; box-shadow:var(--shadow);
+    }
+    .logo span{font-weight:800;color:#0b1220}
+    h1{margin:0;font-size: clamp(26px, 3.6vw, 40px); line-height:1.1}
+    .sub{color:var(--muted); margin-top:.35rem}
+
+    .notice{
+      display:inline-flex; align-items:center; gap:.6rem;
+      background: rgba(99,102,241,.12);
+      border:1px solid rgba(99,102,241,.25);
+      padding:.5rem .75rem; border-radius:999px;
+      font-size:.9rem; color:#c7d2fe;
+    }
+
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0)) , var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin:0 0 .35rem 0;
+      font-size: clamp(18px, 2vw, 22px);
+    }
+    .pill{
+      display:inline-block;
+      font-size:.78rem;
+      color:#0b1220;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      padding:.28rem .6rem; border-radius:999px; font-weight:700;
+      letter-spacing:.02em;
+    }
+    ol.steps{
+      margin:.5rem 0 0 1rem; padding:0;
+    }
+    ol.steps li{ margin:.35rem 0; }
+    .muted{ color:var(--muted); }
+
+    .section{ margin-top:24px; }
+    .kpis{
+      display:grid; gap:14px; grid-template-columns: 1fr 1fr 1fr;
+    }
+    .kpi{ background:rgba(255,255,255,.02); border:1px dashed var(--border); border-radius:12px; padding:12px; text-align:center;}
+    .kpi b{ display:block; font-size:1.1rem }
+    .kbd{
+      background:#0b1220; border:1px solid var(--border);
+      padding:.1rem .45rem; border-radius:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.92rem;
+      color:#dbeafe;
+    }
+
+    a.btn{
+      display:inline-block; text-decoration:none; color:#0b1220; font-weight:700;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      padding:.7rem 1rem; border-radius:12px; box-shadow:var(--shadow);
+      transition: transform .06s ease;
+    }
+    a.btn:active{ transform: translateY(1px) }
+
+    hr{ border:none; border-top:1px solid var(--border); margin:28px 0 }
+
+    footer{ color:var(--muted); font-size:.9rem; margin-top:22px }
+    .list{ margin:.3rem 0 0 1rem }
   </style>
 </head>
+
 <body>
-  <h1>How to Delete Your Data</h1>
-  <p class="small">Effective date: <strong>August 13, 2025</strong></p>
+  <main class="wrap">
+    <div class="hero">
+      <div class="logo" aria-hidden="true"><span>F</span></div>
+      <div>
+        <h1>Account & Data Deletion — Field Command Pro</h1>
+        <div class="sub">How to permanently delete your account and personal data associated with Field Command Pro.</div>
+        <div style="margin-top:10px"><span class="notice">Effective date: <strong>August 13, 2025</strong></span></div>
+      </div>
+    </div>
 
-  <div class="step">
-    <h2>Option A: In‑App Request (Recommended)</h2>
-    <p>Open the App and go to <strong>[Settings &gt; Privacy &gt; Delete account/data]</strong>. Confirm the request. We will delete or anonymize your personal data associated with Facebook Login within <strong>30 days</strong>, unless we must keep it for legal reasons.</p>
-  </div>
+    <!-- Quick facts -->
+    <section class="section">
+      <div class="kpis">
+        <div class="kpi"><b>Up to 30 days</b><span class="muted">for deletion to complete</span></div>
+        <div class="kpi"><b>3 methods</b><span class="muted">choose any option below</span></div>
+        <div class="kpi"><b>No 2FA required</b><span class="muted">for reviewer/test accounts</span></div>
+      </div>
+    </section>
 
-  <div class="step">
-    <h2>Option B: Email Request</h2>
-    <p>Send an email to <strong>Info@FieldCommandPro.com</strong> with the subject <em>“Data Deletion Request”</em> and include the Facebook account email you used with the App. We will verify your identity and process the request within <strong>30 days</strong>.</p>
-  </div>
+    <!-- Options -->
+    <section class="section grid">
+      <article class="card">
+        <h2><span class="pill">Option A</span> In-App Deletion (Recommended)</h2>
+        <ol class="steps">
+          <li>Open the app and sign in to the account you want to delete.</li>
+          <li>Go to <span class="kbd">Settings</span> → <span class="kbd">Privacy</span> → <span class="kbd">Delete Account</span>.</li>
+          <li>Review the notice and confirm. Your account and personal data will be deleted or anonymized within <strong>30 days</strong>, unless we’re legally required to retain some records.</li>
+        </ol>
+      </article>
 
-  <h2>What data is deleted?</h2>
-  <p>We delete or anonymize personal data linked to your account (e.g., name, email, profile ID, and App activity). Some records may be retained if required by law, to prevent fraud/abuse, or for security.</p>
+      <article class="card">
+        <h2><span class="pill">Option B</span> Email Request</h2>
+        <p>Send us an email and we’ll process deletion for you.</p>
+        <ol class="steps">
+          <li>Email <a class="btn" href="mailto:Info@FieldCommandPro.com?subject=Data%20Deletion%20Request">Info@FieldCommandPro.com</a> with subject <em>“Data Deletion Request”</em>.</li>
+          <li>Include the email/username used for your account and a brief confirmation that you wish to permanently delete it.</li>
+          <li>We’ll verify ownership and complete the request within <strong>30 days</strong>.</li>
+        </ol>
+      </article>
 
-  <h2>Questions?</h2>
-  <p>Contact: <strong>Info@FieldCommandPro.com</strong></p>
+      <article class="card">
+        <h2><span class="pill">Option C</span> Install, Log In & Delete</h2>
+        <p>If you’re not currently signed in on a device:</p>
+        <ol class="steps">
+          <li>Install Field Command Pro from the app store.</li>
+          <li>Log in using the account you want to delete.</li>
+          <li>Navigate to <span class="kbd">Settings</span> → <span class="kbd">Delete Account</span> and confirm.</li>
+        </ol>
+        <p class="muted">This is the same as Option A, but spelled out for users who need to reinstall first.</p>
+      </article>
 
-  <hr>
-  <p class="small">Note for developers: You can point Meta’s “User Data Deletion” field to this page or implement an automated deletion callback endpoint.</p>
+      <article class="card">
+        <h2><span class="pill">What gets deleted?</span></h2>
+        <ul class="list">
+          <li>Identity data (name, email/username, profile ID)</li>
+          <li>Profile & preferences</li>
+          <li>In-app content such as pins, comments, alerts</li>
+          <li>Subscription entitlements tied to the account</li>
+          <li>General app activity associated with your profile</li>
+        </ul>
+        <p class="muted">We may retain limited records when necessary to comply with law, resolve disputes, prevent fraud/abuse, or meet accounting obligations (e.g., payment/transaction logs). These are held only for as long as required.</p>
+      </article>
+    </section>
+
+    <!-- Support -->
+    <section class="section card">
+      <h2>Need help?</h2>
+      <p>If you encounter any issues deleting your account, contact our support team at <a href="mailto:Info@FieldCommandPro.com">Info@FieldCommandPro.com</a>. Please write from the email associated with your account so we can verify ownership quickly.</p>
+    </section>
+
+    <hr />
+
+    <footer>
+      <p class="muted">Developers: You may link to this page from Google Play’s “Delete account URL.” This page describes all available deletion methods and retention notes.</p>
+    </footer>
+  </main>
 </body>
 </html>
